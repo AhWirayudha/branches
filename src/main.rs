@@ -71,4 +71,27 @@ fn main() {
         println!("{}!", number_range);
     }
     println!("LIFTOFF!!!");
+
+    //convert between celsius and fahrenheit
+    println!("{}°F is {}°C", 32.0, convert_between_celsius_and_fahrenheit('F', 32.0));
+    println!("{}°C is {}°F", 0.0, convert_between_celsius_and_fahrenheit('C', 0.0));
+    convert_between_celsius_and_fahrenheit('K', 100.0);
+}
+
+fn convert_between_celsius_and_fahrenheit(label: char, value: f64) -> f64 {
+    if label == 'C' {
+        convert_to_fahrenheit(value)
+    } else if label == 'F' {
+        convert_to_celsius(value)
+    } else {
+        panic!("invalid label: {}", label);
+    }
+}
+
+fn convert_to_fahrenheit(celsius: f64) -> f64 {
+    celsius * 9.0 / 5.0 + 32.0
+}
+
+fn convert_to_celsius(fahrenheit: f64) -> f64 {
+    (fahrenheit - 32.0) * 5.0 / 9.0
 }
